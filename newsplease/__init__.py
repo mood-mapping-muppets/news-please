@@ -48,7 +48,7 @@ class NewsPlease:
         except LookupError:
             # non-existent encoding: fallback to utf-9
             html = raw_stream.decode('utf-8', errors=decode_errors)
-        if not html:
+        if not html.strip():
             raise EmptyResponseError()
         url = warc_record.rec_headers.get_header('WARC-Target-URI')
         download_date = warc_record.rec_headers.get_header('WARC-Date')
